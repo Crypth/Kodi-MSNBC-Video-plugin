@@ -279,10 +279,11 @@ def populateSources(slug,dataParam):
           
           videoSoup = BeautifulSoup(data, 'html.parser')
           videos = videoSoup.findAll("video")
-          subTags = videoSoup.findAll("textstream")[0]['src']
-          logging.debug(subTags)
+          subTags =''
+          if textStream:
+            subTags = videoSoup.findAll("textstream")[0]['src']
 
-          logging.debug("subs: " + subTags)
+          #logging.debug("subs: " + subTags)
           for video in videos:
             height = "0"
             src=''
